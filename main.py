@@ -1,2 +1,2 @@
 import discord
-import ics
+from ics import Calendar,Event
