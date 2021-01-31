@@ -30,7 +30,8 @@ def format_events(events:[]) -> [str]:
     for event in events:       
         return_list.append(''.join([str(event.name)+'\n',\
             (str(BeautifulSoup(event.description,'lxml').get_text()+'\n')) if BeautifulSoup(event.description,'lxml').get_text() != None else '',\
-                ('Starts at: '+ datetime.fromisoformat(str(event.begin)).strftime('%Y-%m-%d %H:%M:%S')+' UTC'+'\n') if event.begin != None else '',\
+                #('Starts at: '+ datetime.fromisoformat(str(event.begin)).strftime('%Y-%m-%d %H:%M:%S')+' UTC'+'\n') if event.begin != None else '',\
+                 ('Starts at: '+ (str(event.begin))+' UTC'+'\n') if event.begin != None else '',\
                     ('Duration: '+str(event.duration)+'\n') if event.duration != None else '',\
                         ('Link: '+str(event.url)+'\n') if event.url!=None else '',\
                             ('Organizer: '+str(event.organizer)+'\n') if event.organizer!=None else '']))
