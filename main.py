@@ -1,11 +1,11 @@
 import discord
-import redis
+
 import os
 from getdata import get
 
-redis_server = redis.Redis()
+
 client = discord.Client()
-AUTH_TOKEN = str(redis_server.get(‘AUTH_KEY’).decode(‘utf-8’))
+
 @client.event
 async def on_ready():
   print('We have logged in as {0.user}'.format(client))
@@ -21,5 +21,5 @@ async def on_message(message):
 
     await message.channel.send(get(msg)[0])
 
-client.run(AUTH_TOKEN)
+client.run('ODA0OTE3NTA5MjQ4OTA5MzIz.YBTT2A.nqFKLFPVsnlkiuP2vDTBEFPsUrU')
   
