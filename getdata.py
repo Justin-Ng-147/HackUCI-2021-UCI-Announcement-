@@ -37,5 +37,7 @@ def format_events(events:[]) -> [str]:
     return return_list
 
 
-def get(url:str) - > [str]:
+def get(url:str) -> [str]:
     return format_events(get_todays_events(get_calendar(url)))
+
+#print(get('https://calendar.google.com/calendar/ical/pccd56qth2qfdt3alj9voutbes%40group.calendar.google.com/public/basic.ics'))
