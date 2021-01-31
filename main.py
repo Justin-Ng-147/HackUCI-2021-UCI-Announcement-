@@ -2,7 +2,6 @@ import discord
 import os
 from getdata import get
 from dotenv import load_dotenv
-import redis
 
 load_dotenv('a.env')
 Token = os.getenv('TOKEN')
@@ -45,6 +44,6 @@ async def on_message(message):
             embedVar = discord.Embed(title=f"Error, {cal} does not lead to valid ics file",color = 0xCABD97)
             await message.channel.send(embed=embedVar)
 
-#redis_server = redis.Redis()
+
 
 client.run(Token)
