@@ -3,6 +3,7 @@ import redis
 import os
 from getdata import get
 
+redis_server = redis.Redis()
 client = discord.Client()
 AUTH_TOKEN = str(redis_server.get(‘AUTH_KEY’).decode(‘utf-8’))
 @client.event
