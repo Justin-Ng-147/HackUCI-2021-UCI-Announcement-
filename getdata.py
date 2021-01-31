@@ -3,23 +3,29 @@ import datetime
 import requests
 from bs4 import BeautifulSoup
 
-time = datetime.datetime.utcnow().date()
+
 
 def get_calendar(url:str) -> Calendar:
+    '''Returns a Calendar object from an url pointing to a public calendar. Raises AssertionError if status code isn't 200.
+    '''
     r = requests.get(url)
     if r.status_code != 200:
-        print("Error")
         raise AssertionError   
     cal = Calendar(r.text)
     return cal
 
 def get_todays_events(cal:Calendar) -> []:
+    '''Returns a list of all events for today from a Calendar object
+    '''
     list_of_events =[]
     for event in cal.timeline.today():
         list_of_events.append(event)
     return list_of_events
 
 def format_events(events:[]) -> [str]:
+    '''Returns a list of formated string where each element of the list are different events.\n
+    If one of the event parameters returns none then it along with any related strings will not show up.
+    '''
     return_list =[]
     for event in events:       
         return_list.append(''.join([str(event.name)+'\n',\
@@ -29,6 +35,7 @@ def format_events(events:[]) -> [str]:
                         ('Link: '+str(event.url)+'\n') if event.url!=None else '',\
                             ('Organizer: '+str(event.organizer)+'\n') if event.organizer!=None else '']))
     return return_list
+
 
 def get(url:str) - > [str]:
     return format_events(get_todays_events(get_calendar(url)))
