@@ -5,7 +5,7 @@ from getdata import get
 from dotenv import load_dotenv
 
 
-load_dotenv()
+load_dotenv('a.env')
 Token = os.getenv('TOKEN')
 client = discord.Client()
 
