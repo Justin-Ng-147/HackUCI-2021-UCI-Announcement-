@@ -1,12 +1,12 @@
 import discord
 import os
-from ics import Calendar, Event
+from getdata import get
 
 client = discord.Client()
 
 @client.event
 async def on_ready():
-  print('We have logged in as {0.user}.format'(client))
+  print('We have logged in as {0.user}'.format(client))
 
 @client.event
 async def on_message(message):
@@ -14,6 +14,8 @@ async def on_message(message):
     return
   
   if message.content.startswith('!events'):
-    await message.channel.send('Command test successful')
+    msg = message.content[7:]
+    print(get(msg))
+    await message.channel.send(get(msg))
 
 client.run(os.getenv('TOKEN'))
