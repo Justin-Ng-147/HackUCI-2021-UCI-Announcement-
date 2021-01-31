@@ -30,5 +30,5 @@ def format_events(events:[]) -> [str]:
                             ('Organizer: '+str(event.organizer)+'\n') if event.organizer!=None else '']))
     return return_list
 
-for text in format_events(get_todays_events(get_calendar(input()))):
-    print(text)
+def get(url:str) - > [str]:
+    return format_events(get_todays_events(get_calendar(url)))
